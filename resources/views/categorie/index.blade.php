@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
+
+
 <div class="content">
     <div class="row">
     <div class="col-md-12">
@@ -27,17 +29,18 @@
                       </th>
                     </tr></thead>
                     <tbody>
-                       
-                       <tr>
+                    @foreach($categories as $categorie)
+                      <tr>
+                        <td>
+                          {{$categorie->id}}
+                        </td>
                          <td>
-                         
+                         {{$categorie->nom}}
                          </td>
                          <td>
-                        
+                         {{$categorie->description}}
                          </td>
-                         <td>
-                        
-                         </td>
+                     
                          
                          <td class="text-right text-center">
                          
@@ -46,7 +49,7 @@
                         
                          </td>
                        </tr>
-                        
+                       @endforeach
                     </tbody>
                   </table>
                 </div>
