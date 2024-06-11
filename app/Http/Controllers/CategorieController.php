@@ -12,8 +12,9 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
-        return view('categorie produit.index');
+        
+        $categories = Categorie::all();
+        return view('categorie.index',['categories' => $categories]);
     }
 
     /**
