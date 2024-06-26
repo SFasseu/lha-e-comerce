@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
 class UserController extends Controller
 {
     /**
@@ -21,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+      return view('user.create');
     }
 
     /**
@@ -29,8 +30,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //les validaations
+        $request->validate([
+         'email'=> 'required|email|unique:users',
+         'name'=>'required|string|max:255|min:2',
+         'password'=>'required|min:6|confirmed',
+        ]);
+
+        //recuperation des donnees du formulaire
+        $name =$request->input('name');
+        $email =$request->input('email');
+        $password =$request->input('password');
+        $confirmpassword =$request->input('password_confirmation');
+
+        //creation de l'utilisateur
+        $user = new User();
+        $user->name= $name;
+        $user->email= $email;
+        $user->password= $password;
+        $user->save();
+        return redirect()->route('users.index');
     }
+   
 
     /**
      * Display the specified resource.
@@ -43,17 +64,24 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('user.edit',compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $name =$request->input('name');
+        $email =$request->input('email');
+         
+        
+        $user->name= $name;
+        $user->email= $email;
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
@@ -61,6 +89,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+         // Find the user by ID
+  $user = User::findOrFail($id);
+
+  // Delete the user from the database
+  $user->delete();
+
+  // Flash a success message (optional)
+  session()->flash('success', 'User deleted successfully!');
+
+  // Redirect to the user list page
+  return redirect()->route('users.index');
     }
 }

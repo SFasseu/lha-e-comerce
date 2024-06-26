@@ -33,23 +33,24 @@
                       </th>
                     </tr></thead>
                     <tbody>
-                       
+                    @foreach($commandes as $commande)
                        <tr>
                          <td>
-                         
+                         {{$commande->id}}
                          </td>
                          <td>
-                         
+                         {{$commande->client_id}}
                          </td>
                          <td>
-                         
+                         {{$commande->created_at}}
                          </td>
                          <td>
-                        
+                         {{$commande->statut}}
                          </td>
                          <td>
-                        
+                         {{$commande->montant_total}}
                          </td>
+                       
                          
                          <td class="text-right text-center">
                          
@@ -58,7 +59,7 @@
                         
                          </td>
                        </tr>
-                        
+                    @endforeach
                     </tbody>
                   </table>
                 </div>

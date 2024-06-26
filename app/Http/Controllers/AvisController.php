@@ -12,8 +12,8 @@ class AvisController extends Controller
      */
     public function index()
     {
-        //
-        return view('avis.index');
+        $avis = avis::all();
+        return view('avis.index',['avis' => $avis]);
     }
 
     /**

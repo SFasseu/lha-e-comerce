@@ -7,7 +7,7 @@
             <div class="card">
               <div class="card-header d-flex">
                 <h4 class="card-title"> all users</h4>
-                <a target="_blank" href="#" class="btn btn-round btn-success mx-5">ajouter</a>
+                <a href="{{route('user.create')}}" class="btn btn-round btn-success mx-5">ajouter</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -39,8 +39,9 @@
                         {{$user->created_at}}
                         </td>
                         <td class="text-right">
-                        <a target="_blank" href="#" class="btn btn-round btn-primary">modifier</a>
-                           <a target="_blank" href="#" class="btn btn-round btn-danger">suprimer</a>
+                        <a  href="{{route('user.show',$user->id)}}" class="btn btn-round btn-secondary">show</a>
+                        <a  href="{{route('user.edit',$user->id)}}" class="btn btn-round btn-primary">edit</a>
+                           <a  href="{{route('user.destroy',$user->id)}}" class="btn btn-round btn-danger">delete</a>
                         </td>
                       </tr>
                        @endforeach

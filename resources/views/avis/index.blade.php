@@ -17,48 +17,50 @@
                       <tr><th>
                         id
                       </th>
+                      
+                      <th>
+                        produit
+                      </th>
+                      <th>
+                        client
+                      </th>
                       <th>
                         Contenu
                       </th>
                       <th>
                         Note
                       </th>
-                      <th>
-                        produit
-                      </th>
-                      <th>
-                        produit
-                      </th>
                       <th class="text-right">
                         Actions
                       </th>
                     </tr></thead>
                     <tbody>
-                       
-                      <tr>
-                        <td>
+                    @foreach($avis as $avis)
+                       <tr>
+                         <td>
+                         {{$avis->id}}
+                         </td>
+                         <td>
+                         {{$avis->produit_id}}
+                         </td>
+                         <td>
+                         {{$avis->client_id}}
+                         </td>
+                         <td>
+                         {{$avis->contenu}}
+                         </td>
+                         <td>
+                         {{$avis->note}} 
+                         </td>
+                         
+                         <td class="text-right text-center">
+                         
+                           <a target="_blank" href="#" class="btn btn-round btn-primary">modifier</a>
+                           <a target="_blank" href="#" class="btn btn-round btn-danger">suprimer</a>
                         
-                        </td>
-                        <td>
-                       
-                        </td>
-                        <td>
-                       
-                        </td>
-                        <td>
-                       
-                       </td>
-                       <td>
-                       
-                       </td>
-                        <td class="text-right text-center">
-                        
-                          <a target="_blank" href="#" class="btn btn-round btn-primary">modifier</a>
-                          <a target="_blank" href="#" class="btn btn-round btn-danger">suprimer</a>
-                       
-                        </td>
-                      </tr>
-                       
+                         </td>
+                       </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>
