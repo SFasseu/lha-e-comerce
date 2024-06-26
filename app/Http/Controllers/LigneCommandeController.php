@@ -12,8 +12,8 @@ class LigneCommandeController extends Controller
      */
     public function index()
     {
-        //
-        return view('ligne commande.index');
+        $lignes = lignecommande::all();
+        return view('ligne.index',['ligne_de_commandes' => $lignes]);
     }
 
     /**

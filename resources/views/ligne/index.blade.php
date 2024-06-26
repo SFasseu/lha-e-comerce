@@ -33,22 +33,22 @@
                       </th>
                     </tr></thead>
                     <tbody>
-                       
+                    @foreach($lignes as $ligne)
                        <tr>
                          <td>
-                         
+                         {{$ligne->id}}
                          </td>
                          <td>
-                         
+                         {{$ligne->produit_id}}
                          </td>
                          <td>
-                         
+                         {{$ligne->commande_ id}}
                          </td>
                          <td>
-                        
+                         {{$ligne->quantite}}
                          </td>
                          <td>
-                        
+                         {{$ligne->prix}} 
                          </td>
                          
                          <td class="text-right text-center">
@@ -58,7 +58,7 @@
                         
                          </td>
                        </tr>
-                        
+                        @endforeach
                     </tbody>
                   </table>
                 </div>

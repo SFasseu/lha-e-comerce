@@ -34,21 +34,24 @@
                       </th>
                     </tr></thead>
                     <tbody>
-                       
+                    @foreach($paiements as $paiement)
                        <tr>
                          <td>
-                         
+                         {{$paiement->id}}
                          </td>
                          <td>
-                         
+                         {{$paiement->commande_id}}
                          </td>
                          <td>
-                         
+                         {{$paiement->created_at}}
                          </td>
                          <td>
-                        
+                         {{$paiement->montant}}
                          </td>
                          
+                         <td>
+                         {{$paiement->mode_paiement}}
+                         </td>
                          
                          <td class="text-right text-center">
                          
@@ -57,7 +60,7 @@
                         
                          </td>
                        </tr>
-                        
+                       @endforeach 
                     </tbody>
                   </table>
                 </div>
