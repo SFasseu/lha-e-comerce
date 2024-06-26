@@ -6,9 +6,8 @@
 
 @section('content')
 
- @endsection
- 
- <div class="container">
+
+<div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
             <form class="form" method="POST" action="{{ route('login') }}">
@@ -88,5 +87,8 @@
         </div>
       </div>
 
+ @endsection
+ 
+ 
 			
 	

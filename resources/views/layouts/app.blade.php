@@ -21,7 +21,7 @@ Coded by www.creative-tim.com
   <link rel="icon" type="image/png" href="{{asset('/admin')}}/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Paper Dashboard 2 by Creative Tim
+    e-commerce
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -171,6 +171,11 @@ Coded by www.creative-tim.com
       </nav> 
       <!-- End Navbar -->
        <div class="content">
+       @if(Session::has('message'))
+        <div class="alert alert-success text-center" role="alert"> 
+        {{ Session()->get('message') }}
+        </div>
+        @endif
        @yield('content')
        </div>
       
