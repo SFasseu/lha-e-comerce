@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+
 <div class="content">
     <div class="row">
     <div class="col-md-12">
@@ -38,10 +39,15 @@
                         <td>
                         {{$user->created_at}}
                         </td>
-                        <td class="text-right">
+                        <td class="text-right d-flex">
                         <a  href="{{route('user.show',$user->id)}}" class="btn btn-round btn-secondary">show</a>
-                        <a  href="{{route('user.edit',$user->id)}}" class="btn btn-round btn-primary">edit</a>
-                           <a  href="{{route('user.destroy',$user->id)}}" class="btn btn-round btn-danger">delete</a>
+                        <a  href="{{route('user.edit',$user->id)}}" class="btn btn-round btn-primary ">edit</a>
+                        <form action="{{route('user.destroy',$user->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                        <button type="submit" class="btn btn-round btn-danger">delete</button>
+                        </form>
+
                         </td>
                       </tr>
                        @endforeach

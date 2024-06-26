@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 
+
 class UserController extends Controller
 {
     /**
@@ -49,7 +50,7 @@ class UserController extends Controller
         $user->email= $email;
         $user->password= $password;
         $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('user.index')->with('message','l utilisateur a ete ajouter avec succes');
     }
    
 
@@ -74,31 +75,28 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        
+
         $name =$request->input('name');
         $email =$request->input('email');
-         
         
         $user->name= $name;
         $user->email= $email;
         $user->save();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message','l utilisateur a ete modifier avec succes');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-         // Find the user by ID
-  $user = User::findOrFail($id);
-
-  // Delete the user from the database
-  $user->delete();
-
-  // Flash a success message (optional)
-  session()->flash('success', 'User deleted successfully!');
-
-  // Redirect to the user list page
-  return redirect()->route('users.index');
+        // Find the user by ID
+        $user = User::find($id);
+        // Delete the user from the database
+        $user->delete();
+        // Redirect to the user list page
+        
+        return redirect()->route('user.index')->with('message','l utilisateur a ete supprimer avec succes');
     }
 }
