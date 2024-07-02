@@ -7,7 +7,7 @@
             <div class="card">
               <div class="card-header d-flex">
                 <h4 class="card-title"> all products</h4>
-                <a target="_blank" href="#" class="btn btn-round btn-success mx-5">ajouter</a>
+                <a  href="{{route('produit.create')}}" class="btn btn-round btn-success mx-5">ajouter</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -40,36 +40,35 @@
                       </th>
                     </tr></thead>
                     <tbody>
-                       
-                       <tr>
-                         <td>
-                         
-                         </td>
-                         <td>
-                         
-                         </td>
-                         <td>
-                         
-                         </td>
-                         <td>
-                        
-                         </td>
-                         <td>
-                        
-                        </td><td>
-                        
-                        </td><td>
-                        
+                        @foreach($produits as $produit)
+                      <tr>
+                        <td>
+                          {{$produit->nom}}
                         </td>
-                         
-                         <td class="text-right text-center">
-                         
-                           <a target="_blank" href="#" class="btn btn-round btn-primary">modifier</a>
-                           <a target="_blank" href="#" class="btn btn-round btn-danger">suprimer</a>
-                        
-                         </td>
-                       </tr>
-                        
+                        <td>
+                        {{$produit->description}}
+                        </td>
+                        <td>
+                        {{$produit->prix}}
+                        </td>
+                        <td>
+                        {{$produit->stock}}
+                        </td>
+                        <td>
+                        {{$produit->image}}
+                        </td>
+                        <td class="text-right d-flex">
+                        <a  href="{{route('produit.show',$produit->id)}}" class="btn btn-round btn-secondary">show</a>
+                        <a  href="{{route('produit.edit',$produit->id)}}" class="btn btn-round btn-primary ">edit</a>
+                        <form action="{{route('produit.destroy',$produit->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                        <button type="submit" class="btn btn-round btn-danger">delete</button>
+                        </form>
+
+                        </td>
+                      </tr>
+                       @endforeach
                     </tbody>
                   </table>
                 </div>

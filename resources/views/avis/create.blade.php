@@ -6,12 +6,12 @@
     
             <div class="card">
               <div class="card-header d-flex">
-                <h4 class="card-title"> create user</h4>
+                <h4 class="card-title"> create avis</h4>
               </div>
               <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">create Profile</h5>
+                <h5 class="card-title">create avis</h5>
               </div>
               <div class="card-body">
                 <form action="{{route('user.store')}}" method="post">
@@ -19,9 +19,9 @@
                 <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>email</label>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Home Address" >
-                        @error('email')
+                        <label>client</label>
+                        <input type="text" class="form-control" name="client_id" value="{{ old('client_id') }}" placeholder="Home Address" >
+                        @error('client_id')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -33,9 +33,9 @@
                     <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>name</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}"  placeholder="name" >
-                        @error('name')
+                        <label>produit</label>
+                        <input type="text" class="form-control" name="produit_id" value="{{ old('produit_id') }}"  placeholder="produit_id" >
+                        @error('produit_id')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -48,9 +48,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password" >
-                        @error('password')
+                        <label>contenu</label>
+                        <input type="text" class="form-control" name="contenu" value="{{ old('contenu') }}" placeholder="contenu" >
+                        @error('contenu')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -61,8 +61,8 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control"  name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="confirm" >
+                        <label>note</label>
+                        <input type="number" class="form-control"  name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="confirm" >
                         @error('password_confirmation')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>

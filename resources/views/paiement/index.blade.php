@@ -7,7 +7,7 @@
             <div class="card">
               <div class="card-header d-flex">
                 <h4 class="card-title"> all paiements</h4>
-                <a target="_blank" href="#" class="btn btn-round btn-success mx-5">ajouter</a>
+                <a  href="{{route('paiement.create')}}" class="btn btn-round btn-success mx-5">ajouter</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -53,12 +53,15 @@
                          {{$paiement->mode_paiement}}
                          </td>
                          
-                         <td class="text-right text-center">
-                         
-                           <a target="_blank" href="#" class="btn btn-round btn-primary">modifier</a>
-                           <a target="_blank" href="#" class="btn btn-round btn-danger">suprimer</a>
-                        
-                         </td>
+                         <td class="text-right d-flex">
+                        <a  href="{{route('paiement.show',$paiement->id)}}" class="btn btn-round btn-secondary">show</a>
+                        <a  href="{{route('paiement.edit',$paiement->id)}}" class="btn btn-round btn-primary ">edit</a>
+                        <form action="{{route('paiement.destroy',$paiement->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                        <button type="submit" class="btn btn-round btn-danger">delete</button>
+                        </form>
+
                        </tr>
                        @endforeach 
                     </tbody>

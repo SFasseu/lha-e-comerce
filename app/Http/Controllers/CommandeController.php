@@ -22,7 +22,7 @@ class CommandeController extends Controller
      */
     public function create()
     {
-        //
+      return view('commande.create');
     }
 
     /**
@@ -30,8 +30,30 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //les validaations
+        $request->validate([
+         'client-id'=> 'required',
+         'statut'=>'required|string|max:255|min:2',
+         'montant_total'=>'required',
+         
+        ]);
+
+        //recuperation des donnees du formulaire
+        $client =$request->input('client_id');
+        $statut =$request->input('statut');
+        $montant_total =$request->input('montant_total$montant_total');
+        
+
+        //creation de l'utilisateur
+        $commande = new commande();
+        $commande->client_id= $client_id;
+        $commande->statut= $statut;
+        $commande->montant_total= $montant_total;
+       
+        $commande->save();
+        return redirect()->route('commande.index')->with('message','l utilisateur a ete ajouter avec succes');
     }
+   
 
     /**
      * Display the specified resource.
@@ -44,24 +66,41 @@ class CommandeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(commande $commande)
     {
-        //
+        return view('commande.edit',compact('commande'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, commande $commande)
     {
-        //
+        
+
+        $client_id =$request->input('client_id');
+        $statut =$request->input('statut');
+        $montant_total =$request->input('montant_total');
+       
+        $commande->client_id= $client_id;
+        $commande->statut= $statut;        
+        $commande->montant_total= $montant_total;        
+        
+        $commande->save();
+        return redirect()->route('commande.index')->with('message','l utilisateur a ete modifier avec succes');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Find the commande by ID
+        $commande = commande::find($id);
+        // Delete the commande from the database
+        $commande->delete();
+        // Redirect to the commande list page
+        
+        return redirect()->route('commande.index')->with('message','l utilisateur a ete supprimer avec succes');
     }
 }

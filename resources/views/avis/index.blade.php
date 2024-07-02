@@ -7,7 +7,7 @@
             <div class="card">
               <div class="card-header d-flex ">
                 <h4 class="card-title"> all avis</h4>
-                <a target="_blank" href="#" class="btn btn-round btn-success mx-5">Ajouter</a>
+                <a  href="{{route('avis.create')}}" class="btn btn-round btn-success mx-5">Ajouter</a>
               </div>
               
               <div class="card-body">
@@ -53,12 +53,15 @@
                          {{$avis->note}} 
                          </td>
                          
-                         <td class="text-right text-center">
-                         
-                           <a target="_blank" href="#" class="btn btn-round btn-primary">modifier</a>
-                           <a target="_blank" href="#" class="btn btn-round btn-danger">suprimer</a>
-                        
-                         </td>
+                         <td class="text-right d-flex">
+                        <a  href="{{route('avis.show',$avis->id)}}" class="btn btn-round btn-secondary">show</a>
+                        <a  href="{{route('avis.edit',$avis->id)}}" class="btn btn-round btn-primary ">edit</a>
+                        <form action="{{route('avis.destroy',$avis->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                        <button type="submit" class="btn btn-round btn-danger">delete</button>
+                        </form>
+
                        </tr>
                         @endforeach
                     </tbody>

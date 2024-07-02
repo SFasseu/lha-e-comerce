@@ -6,22 +6,23 @@
     
             <div class="card">
               <div class="card-header d-flex">
-                <h4 class="card-title"> create user</h4>
+                <h4 class="card-title"> update user</h4>
               </div>
               <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">create Profile</h5>
+                <h5 class="card-title">Edit Profile</h5>
               </div>
               <div class="card-body">
-                <form action="{{route('user.store')}}" method="post">
+                <form action="{{route('lignecommande.update',$lignecommande->id)}}" method="post">
                   @csrf
-                <div class="row">
+                  @method('put')
+                  <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>email</label>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Home Address" >
-                        @error('email')
+                        <label>commande</label>
+                        <input type="text" class="form-control" name="commande_id" value="{{ $paiement->commmande_id }}" placeholder="Home Address" >
+                        @error('commande')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -33,9 +34,9 @@
                     <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>name</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}"  placeholder="name" >
-                        @error('name')
+                        <label>produit</label>
+                        <input type="text" class="form-control" name="produit-id" value="{{ $paiement->produit_id }}"  placeholder="produit" >
+                        @error('produit')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -48,9 +49,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password" >
-                        @error('password')
+                        <label>quantite</label>
+                        <input type="number" class="form-control" name="quantite" value="{{ $paiement->quantite}}" placeholder="quantite" >
+                        @error('quantite')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -61,9 +62,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control"  name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="confirm" >
-                        @error('password_confirmation')
+                        <label>prix</label>
+                        <input type="number" class="form-control"  name="prix" value="{{ $paiement->prix }}" placeholder="confirm" >
+                        @error('prix')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -71,13 +72,7 @@
                       </div>
                     </div>
                   </div>
-                  
-                  <div class="row">
-                    <div class="update ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round">creer</button>
-                    </div>
-                  </div>
-                </form>
+               </form>
               </div>
             </div>
           </div>
