@@ -6,22 +6,23 @@
     
             <div class="card">
               <div class="card-header d-flex">
-                <h4 class="card-title"> create user</h4>
+                <h4 class="card-title"> update produit</h4>
               </div>
               <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">create Profile</h5>
+                <h5 class="card-title">Edit Profile</h5>
               </div>
               <div class="card-body">
-                <form action="{{route('user.store')}}" method="post">
+                <form action="{{route('produit.update',$produit->id)}}" method="post">
                   @csrf
-                <div class="row">
+                  @method('put')
+                  <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>email</label>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Home Address" >
-                        @error('email')
+                        <label>nom</label>
+                        <input type="text" class="form-control" name="nom" value="{{ $produit->nom }}" placeholder="Home Address" >
+                        @error('nom')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -33,9 +34,9 @@
                     <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>name</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}"  placeholder="name" >
-                        @error('name')
+                        <label>description</label>
+                        <input type="text" class="form-control" name="description" value="{{ $produit->description }}"  placeholder="description" >
+                        @error('description')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -48,9 +49,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password" >
-                        @error('password')
+                        <label>prix</label>
+                        <input type="prix" class="form-control" name="prix" value="{{ $produit->prix }}" placeholder="prix" >
+                        @error('prix')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -61,9 +62,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control"  name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="confirm" >
-                        @error('password_confirmation')
+                        <label>stock</label>
+                        <input type="stock" class="form-control"  name="stock" value="{{ $produit->stock }}" placeholder="confirm" >
+                        @error('stock')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -71,10 +72,25 @@
                       </div>
                     </div>
                   </div>
+                  
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>image</label>
+                        <input type="file" class="form-control"  name="image" value="{{ $produit->image}}" placeholder="confirm" >
+                        @error('image')
+                              <span class="text-danger" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                    </div>
+                  </div>
+                 
                   
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round">creer</button>
+                      <button type="submit" class="btn btn-primary btn-round">modifier</button>
                     </div>
                   </div>
                 </form>

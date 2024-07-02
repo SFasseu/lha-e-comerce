@@ -22,7 +22,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+      return view('categorie.create');
     }
 
     /**
@@ -30,8 +30,29 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //les validaations
+        $request->validate([
+         'nom'=> 'required',
+         'description'=>'required|string|max:255|min:2',
+         
+         
+        ]);
+
+        //recuperation des donnees du formulaire
+        $nom =$request->input('nom');
+        $description =$request->input('description');
+       
+
+        //creation de l'utilisateur
+        $categorie = new categorie();
+        $categorie->nom= $nom;
+        $categorie->description= $description;
+        
+       
+        $categorie->save();
+        return redirect()->route('categorie.index')->with('message','l utilisateur a ete ajouter avec succes');
     }
+   
 
     /**
      * Display the specified resource.
@@ -44,24 +65,41 @@ class CategorieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Categorie $categorie)
     {
-        //
+        return view('categorie.edit',compact('categorie'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, categorie $categorie)
     {
-        //
+        
+
+        $nom =$request->input('nom');
+        $description =$request->input('description');
+      
+       
+        $categorie->nom= $nom;
+        $categorie->description= $description;        
+       
+        
+        $categorie->save();
+        return redirect()->route('categorie.index')->with('message','l utilisateur a ete modifier avec succes');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Find the categorie by ID
+        $categorie = categorie::find($id);
+        // Delete the categorie from the database
+        $categorie->delete();
+        // Redirect to the categorie list page
+        
+        return redirect()->route('categorie.index')->with('message','l utilisateur a ete supprimer avec succes');
     }
 }

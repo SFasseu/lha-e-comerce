@@ -9,7 +9,8 @@
             <div class="card">
               <div class="card-header d-flex">
                 <h4 class="card-title"> all categories</h4>
-                <a target="_blank" href="#" class="btn btn-round btn-success mx-5">ajouter</a>
+                
+                <a  href="{{route('categorie.create')}}" class="btn btn-round btn-success mx-5">ajouter</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -42,12 +43,15 @@
                          </td>
                      
                          
-                         <td class="text-right text-center">
-                         
-                           <a target="_blank" href="#" class="btn btn-round btn-primary">modifier</a>
-                           <a target="_blank" href="#" class="btn btn-round btn-danger">suprimer</a>
-                        
-                         </td>
+                         <td class="text-right d-flex">
+                        <a  href="{{route('categorie.show',$categorie->id)}}" class="btn btn-round btn-secondary">show</a>
+                        <a  href="{{route('categorie.edit',$categorie->id)}}" class="btn btn-round btn-primary ">edit</a>
+                        <form action="{{route('categorie.destroy',$categorie->id)}}" method="post">
+                            @csrf
+                            @method('delete')
+                        <button type="submit" class="btn btn-round btn-danger">delete</button>
+                        </form>
+
                        </tr>
                        @endforeach
                     </tbody>

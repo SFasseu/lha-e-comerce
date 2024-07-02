@@ -6,22 +6,22 @@
     
             <div class="card">
               <div class="card-header d-flex">
-                <h4 class="card-title"> create user</h4>
+                <h4 class="card-title"> create paiement</h4>
               </div>
               <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">create Profile</h5>
+                <h5 class="card-title">create paiement</h5>
               </div>
               <div class="card-body">
-                <form action="{{route('user.store')}}" method="post">
+                <form action="{{route('paiement.store')}}" method="post">
                   @csrf
                 <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>email</label>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Home Address" >
-                        @error('email')
+                        <label>commande</label>
+                        <input type="text" class="form-control" name="commande" value="{{ old('commande') }}" placeholder="Home Address" >
+                        @error('commande')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -33,9 +33,9 @@
                     <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>name</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}"  placeholder="name" >
-                        @error('name')
+                        <label>montant</label>
+                        <input type="number" class="form-control" name="montant" value="{{ old('montant') }}"  placeholder="montant" >
+                        @error('montant')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -48,9 +48,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password" >
-                        @error('password')
+                        <label>mode_paiement</label>
+                        <input type="text" class="form-control" name="mode_paiement" value="{{ old('mode_paiement') }}" placeholder="mode_paiement" >
+                        @error('mode_paiement')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -58,19 +58,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control"  name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="confirm" >
-                        @error('password_confirmation')
-                              <span class="text-danger" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                    </div>
-                  </div>
+                  
                   
                   <div class="row">
                     <div class="update ml-auto mr-auto">

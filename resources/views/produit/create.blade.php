@@ -6,22 +6,40 @@
     
             <div class="card">
               <div class="card-header d-flex">
-                <h4 class="card-title"> create user</h4>
+                <h4 class="card-title"> create product</h4>
               </div>
               <div class="col-md-8">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">create Profile</h5>
+                <h5 class="card-title">create product</h5>
               </div>
               <div class="card-body">
-                <form action="{{route('user.store')}}" method="post">
+                <form action="{{route('produit.store')}}" method="post">
                   @csrf
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>nom</label>
+                        <select name="categorie_id" class="form-control" value="{{ old('nom') }}">
+                        @foreach($categories as $categorie)
+                          <option value="categorie_id">
+                          
+                          {{$categorie->nom}}
+                          
+                          </option>
+                          @endforeach
+                        </select>
+                        
+                      </div>
+                    </div>
+                  </div>
                 <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>email</label>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Home Address" >
-                        @error('email')
+                        <label>nom</label>
+                        <input type="text" class="form-control" name="nom" value="{{ old('nom') }}" placeholder="Home Address" >
+                        @error('nom')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -33,9 +51,9 @@
                     <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>name</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}"  placeholder="name" >
-                        @error('name')
+                        <label>description</label>
+                        <input type="text" class="form-control" name="description" value="{{ old('description') }}"  placeholder="description" >
+                        @error('description')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -48,9 +66,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password" >
-                        @error('password')
+                        <label>prix</label>
+                        <input type="prix" class="form-control" name="prix" value="{{ old('prix') }}" placeholder="prix" >
+                        @error('prix')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -61,9 +79,23 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>password</label>
-                        <input type="password" class="form-control"  name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="confirm" >
-                        @error('password_confirmation')
+                        <label>stock</label>
+                        <input type="stock" class="form-control"  name="stock" value="{{ old('stock') }}" placeholder="confirm" >
+                        @error('stock')
+                              <span class="text-danger" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>image</label>
+                        <input type="text" class="form-control"  name="image" value="{{ old('image') }}" placeholder="confirm" >
+                        @error('image')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
                               </span>
@@ -77,6 +109,7 @@
                       <button type="submit" class="btn btn-primary btn-round">creer</button>
                     </div>
                   </div>
+                
                 </form>
               </div>
             </div>
