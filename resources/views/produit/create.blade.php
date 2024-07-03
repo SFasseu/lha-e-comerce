@@ -1,121 +1,31 @@
 @extends('layouts.app')
+
 @section('content')
+    <h1>Créer un produit</h1>
 
-<div class="content">
-    
-    
-            <div class="card">
-              <div class="card-header d-flex">
-                <h4 class="card-title"> create product</h4>
-              </div>
-              <div class="col-md-8">
-            <div class="card card-user">
-              <div class="card-header">
-                <h5 class="card-title">create product</h5>
-              </div>
-              <div class="card-body">
-                <form action="{{route('produit.store')}}" method="post">
-                  @csrf
+    <form method="POST" action="{{ route('produit.store') }}">
+        @csrf
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>nom</label>
-                        <select name="categorie_id" class="form-control" value="{{ old('nom') }}">
-                        @foreach($categories as $categorie)
-                          <option value="categorie_id">
-                          
-                          {{$categorie->nom}}
-                          
-                          </option>
-                          @endforeach
-                        </select>
-                        
-                      </div>
-                    </div>
-                  </div>
-                <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>nom</label>
-                        <input type="text" class="form-control" name="nom" value="{{ old('nom') }}" placeholder="Home Address" >
-                        @error('nom')
-                              <span class="text-danger" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                    </div>
-                  </div>
-                    
-                    <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>description</label>
-                        <input type="text" class="form-control" name="description" value="{{ old('description') }}"  placeholder="description" >
-                        @error('description')
-                              <span class="text-danger" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                    </div>
-                  </div>
-                  
-                  
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>prix</label>
-                        <input type="prix" class="form-control" name="prix" value="{{ old('prix') }}" placeholder="prix" >
-                        @error('prix')
-                              <span class="text-danger" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>stock</label>
-                        <input type="stock" class="form-control"  name="stock" value="{{ old('stock') }}" placeholder="confirm" >
-                        @error('stock')
-                              <span class="text-danger" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>image</label>
-                        <input type="text" class="form-control"  name="image" value="{{ old('image') }}" placeholder="confirm" >
-                        @error('image')
-                              <span class="text-danger" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="update ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round">creer</button>
-                    </div>
-                  </div>
-                
-                </form>
-              </div>
-            </div>
-          </div>
-            </div>
-          </div>
-    </div>
-</div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nom du produit</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Prix</label>
+            <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" name="stock" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
 @endsection
