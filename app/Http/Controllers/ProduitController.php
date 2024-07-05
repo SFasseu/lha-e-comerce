@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produit;
 use App\Models\Categorie;
-
+use Illuminate\Support\Facades\Storage;
 class ProduitController extends Controller
 {
     /**
@@ -32,34 +32,39 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-
-        $categories = Categorie::all();
-        return view('produit.create',['categories' => $categories]);
          //les validaations
         $request->validate([
+        'categorie_id'=> 'required|',
          'nom'=> 'required|string',
          'description'=>'required|string|max:255|min:2',
          'prix'=>'required|numeric',
          'stock'=>'required|numeric',
-         'image'=>'required',
+         'image'=>'required|file|mimes:jpg,png|max:512',
         ]);
 
         //recuperation des donnees du formulaire
+        $categorie_id =$request->input('categorie_id');
         $nom =$request->input('nom');
         $description =$request->input('description');
         $prix =$request->input('prix');
         $stock =$request->input('stock');
-        $image =$request->input('image');
+        $image =$request->file('image');
+        
+        if($request->hasFile('image')){
+            $fileName = 'produit_'.time();
+            Storage::disk('public')->put($fileName, file_get_contents($image));
+        }
 
         //creation de l'utilisateur
         $produit = new Produit();
+        $produit->categorie_id = $categorie_id;
         $produit->nom= $nom;
         $produit->description= $description;
         $produit->prix= $prix;
         $produit->stock= $stock;
         $produit->image= $image;
         $produit->save();
-        return redirect()->route('produit.index')->with('message','l utilisateur a ete ajouter avec succes');
+        return redirect()->route('produit.index')->with('message','le produit a ete ajouter avec succes');
     }
    
 
@@ -85,7 +90,7 @@ class ProduitController extends Controller
     public function update(Request $request, Produit $produit)
     {
         
-        $nom =$request->input('categorie_id');
+        $categorie_id =$request->input('categorie_id');
         $nom =$request->input('nom');
         $description =$request->input('description');
         $prix =$request->input('prix');

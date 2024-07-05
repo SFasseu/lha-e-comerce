@@ -14,19 +14,17 @@
                 <h5 class="card-title">create product</h5>
               </div>
               <div class="card-body">
-                <form action="{{route('produit.store')}}" method="post">
+                <form action="{{route('produit.store')}}" method="post" enctype="multipart/form-data">
                   @csrf
 
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>nom</label>
+                        <label>categorie</label>
                         <select name="categorie_id" class="form-control" value="{{ old('nom') }}">
                         @foreach($categories as $categorie)
-                          <option value="categorie_id">
-                          
+                          <option value="{{$categorie->id}}">
                           {{$categorie->nom}}
-                          
                           </option>
                           @endforeach
                         </select>
@@ -94,7 +92,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>image</label>
-                        <input type="text" class="form-control"  name="image" value="{{ old('image') }}" placeholder="confirm" >
+                        <input type="file" class="form-control"  name="image" value="{{ old('image') }}" placeholder="confirm" >
                         @error('image')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>

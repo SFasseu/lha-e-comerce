@@ -4,7 +4,6 @@
 
 @extends('layouts.guest',['title'=>'login'])
 
-@section('content')
 
 
 <div class="container">
@@ -86,6 +85,7 @@
           </div>
         </div>
       </div>
+      @section('content')
 
  @endsection
  
