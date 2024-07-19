@@ -50,7 +50,7 @@ class CategorieController extends Controller
         
        
         $categorie->save();
-        return redirect()->route('categorie.index')->with('message','l utilisateur a ete ajouter avec succes');
+        return redirect()->route('categorie.index')->with('message','la categorie a ete ajouter avec succes');
     }
    
 
@@ -86,7 +86,7 @@ class CategorieController extends Controller
        
         
         $categorie->save();
-        return redirect()->route('categorie.index')->with('message','l utilisateur a ete modifier avec succes');
+        return redirect()->route('categorie.index')->with('message','la categorie a ete modifier avec succes');
     }
 
     /**
@@ -100,6 +100,6 @@ class CategorieController extends Controller
         $categorie->delete();
         // Redirect to the categorie list page
         
-        return redirect()->route('categorie.index')->with('message','l utilisateur a ete supprimer avec succes');
+        return redirect()->route('categorie.index')->with('message','la categorie a ete supprimer avec succes');
     }
 }

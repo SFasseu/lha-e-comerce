@@ -12,7 +12,22 @@ use App\Http\Controllers\AvisController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/contact', function () {
+    return view('front/contact');
+});
+Route::get('/service', function () {
+    return view('front/service');
+});
+Route::get('/propos', function () {
+    return view('front/propos');
+});
+Route::get('/acceuil', function () {
+    return view('front/acceuil');
+});
 
+Route::get('/boutique', function () {
+    return view('front/boutique');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

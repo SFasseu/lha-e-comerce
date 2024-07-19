@@ -40,8 +40,11 @@
                       </th>
                     </tr></thead>
                     <tbody>
-                        @foreach($produits as $produit)
+                        @foreach($produits as $produit )
                       <tr>
+                        <td>
+                          {{$produit->id}}
+                        </td>
                         <td>
                           {{$produit->nom}}
                         </td>
@@ -53,6 +56,9 @@
                         </td>
                         <td>
                         {{$produit->stock}}
+                        </td>
+                        <td>
+                        {{$produit->categorie_id}}
                         </td>
                         <td>
                         {{$produit->image}}
