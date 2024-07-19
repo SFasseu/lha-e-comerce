@@ -21,6 +21,9 @@ Route::get('/service', function () {
 Route::get('/propos', function () {
     return view('front/propos');
 });
+Route::get('/pourquoi', function () {
+    return view('front/pourquoi');
+});
 Route::get('/acceuil', function () {
     return view('front/acceuil');
 });

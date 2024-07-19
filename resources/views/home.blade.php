@@ -15,7 +15,7 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">produit</p>
-                      <p class="card-title">150GB</p><p>
+                      <p class="card-title"></p><p>
                     </p></div>
                   </div>
                 </div>
@@ -38,7 +38,7 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">paiement</p>
-                      <p class="card-title">$ 1,345</p><p>
+                      <p class="card-title">{{$paiements}}</p><p>
                     </p></div>
                   </div>
                 </div>

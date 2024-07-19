@@ -14,8 +14,10 @@ class ProduitController extends Controller
     public function index()
     {
         $produits = Produit::all();
-       return view('produit.index',['produits' => $produits]);
+
+        return view('front.boutique',['produits' => $produits]);
     }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -49,10 +51,15 @@ class ProduitController extends Controller
         $prix =$request->input('prix');
         $stock =$request->input('stock');
         $image =$request->file('image');
-        
+       
+
         if($request->hasFile('image')){
-            $fileName = 'produit_'.time();
+     
+            $photoExtension = $image->getClientOriginalExtension();
+            $fileName = 'produit_'.time().'.'.$photoExtension;  
+            
             Storage::disk('public')->put($fileName, file_get_contents($image));
+            
         }
 
         //creation de l'utilisateur
@@ -62,7 +69,7 @@ class ProduitController extends Controller
         $produit->description= $description;
         $produit->prix= $prix;
         $produit->stock= $stock;
-        $produit->image= $image;
+        $produit->image= $fileName;
         $produit->save();
         return redirect()->route('produit.index')->with('message','le produit a ete ajouter avec succes');
     }
