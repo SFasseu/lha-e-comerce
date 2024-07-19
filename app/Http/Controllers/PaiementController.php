@@ -14,8 +14,11 @@ class PaiementController extends Controller
     {
         $paiements = paiement::all();
         return view('paiement.index',['paiements' => $paiements]);
+        
+        // Count all products  
     }
 
+    
     /**
      * Show the form for creating a new resource.
      */

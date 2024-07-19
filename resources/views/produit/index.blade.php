@@ -61,7 +61,7 @@
                         {{$produit->categorie_id}}
                         </td>
                         <td>
-                        {{$produit->image}}
+                        <img src="{{asset('storage/'.$produit->image)}}" style="width:80px">
                         </td>
                         <td class="text-right d-flex">
                         <a  href="{{route('produit.show',$produit->id)}}" class="btn btn-round btn-secondary">show</a>

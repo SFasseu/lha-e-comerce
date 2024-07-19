@@ -92,7 +92,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>image</label>
-                        <input type="file" class="form-control"  name="image" value="{{ old('image') }}" placeholder="confirm" >
+                        <input type="file" class="form-control"  name="image"  placeholder="confirm" >
                         @error('image')
                               <span class="text-danger" role="alert">
                                   <strong>{{ $message }}</strong>
