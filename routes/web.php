@@ -8,6 +8,7 @@ use App\Http\Controllers\LigneCommandeController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\AvisController;
+use App\Http\Controllers\ShopController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,3 +43,7 @@ Route::resource('lignecommande', LigneCommandeController::class);
 Route::resource('commande', CommandeController::class);
 Route::resource('categorie', CategorieController::class);
 Route::resource('avis', AvisController::class);
+
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/shop/{product}', [ShopController::class, 'order'])->name('shop.order');
+Route::post('/shop/{product}', [ShopController::class, 'orderSave'])->name('shop.order.store');

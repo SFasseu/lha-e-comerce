@@ -15,7 +15,7 @@ class ProduitController extends Controller
     {
         $produits = Produit::all();
 
-        return view('front.boutique',['produits' => $produits]);
+        return view('produit.index',['produits' => $produits]);
     }
    
 

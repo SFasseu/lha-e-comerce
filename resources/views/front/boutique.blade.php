@@ -67,7 +67,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<a  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  href ="/pourquoi"><i class="fa fa-shopping-cart"></i> commander</a>
+												<a  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  href ="{{route('shop.order',$produit->id)}}"><i class="fa fa-shopping-cart"></i> commander</a>
 											</div>
 											
 

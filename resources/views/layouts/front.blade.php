@@ -181,7 +181,7 @@
 						<li class="active"><a href="/acceuil">Acceuil</a></li>
 						<li><a href="/service">services</a></li>
 						<li><a href="/propos">A Propos</a></li>
-						<li><a href="{{route('produit.index')}}">Boutique</a></li>
+						<li><a href="{{route('shop')}}">Boutique</a></li>
 						<li><a href="/pourquoi">Pourquoi Nous?</a></li>
 						<li><a href="/contact">Contacts</a></li>
 						
